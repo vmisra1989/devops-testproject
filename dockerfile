@@ -1,37 +1,15 @@
-pipeline {
 
-    agent any
-    
-    environment {
-        IMAGE_NAME = 'vmisra1989/jenkins-docker-test'
-        DOCKER_CREDENTIALS_ID = 'docker-hub-creds'
-    }
+# Use a lightweight base image with Bash
+FROM alpine:latest
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/vmisra1989/devops-testproject.git'
-            }
-        }
+# Install bash (Alpine uses sh by default)
+RUN apk add --no-cache bash
 
-        stage('Build Docker Image') {
-        steps {
-            sh 'docker build -t $IMAGE_NAME .'
-                }
-        }
+# Set working directory
+WORKDIR /app
 
-        stage('Login to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                }
-            }
-    }
+# Copy your script into the container
+COPY test.sh .
 
-        stage('Push to Docker Hub') {
-            steps {
-                sh 'docker push $IMAGE_NAME'
-                }
-            }
-    }
-}
+# Make it executable
+RUN chmod +x test.sh
