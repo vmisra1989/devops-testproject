@@ -1,0 +1,33 @@
+
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "myapp:latest"
+    }
+
+    stages {
+    stage('Clone Repo') {
+        steps {
+        git 'https://github.com/your-org/your-repo.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'eval $(minikube docker-env)'
+                    sh 'docker build -t $IMAGE_NAME .'
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    sh 'kubectl apply -f k8s/deployment.yaml'
+                }
+            }
+        }
+    }
+}
