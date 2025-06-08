@@ -9,4 +9,4 @@ echo "yet another test"
 eval $(minikube docker-env)
 
 # Build the Docker image
-docker build -t yourdockerhubusername/myapp:latest .
+docker build -t vmisra1989/myapp:latest .
