@@ -1,28 +1,40 @@
-
 pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "myapp:latest"
+        IMAGE_NAME = "vmisra1989/myapp_test"
+        IMAGE_TAG = "latest"
     }
 
     stages {
-    stage('Clone Repo') {
-        steps {
-        git 'https://github.com/your-org/your-repo.git'
+        stage('Clone Repo') {
+            steps {
+                git 'https://github.com/vmisra1989/devops-testproject/tree/master.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'eval $(minikube docker-env)'
-                    sh 'docker build -t $IMAGE_NAME .'
+                    sh 'chmod +x test.sh'
+                    sh './test.sh'
                 }
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh """
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:$IMAGE_TAG
+                        docker push $IMAGE_NAME:$IMAGE_TAG
+                    """
+                }
+            }
+        }
+
+        stage('Deploy to Minikube') {
             steps {
                 script {
                     sh 'kubectl apply -f k8s/deployment.yaml'
@@ -31,3 +43,4 @@ pipeline {
         }
     }
 }
+
