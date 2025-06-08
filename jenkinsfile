@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/vmisra1989/devops-testproject/tree/master.git'
+                git 'https://github.com/vmisra1989/devops-testproject.git'
             }
         }
 
