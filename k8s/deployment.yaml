@@ -1,0 +1,20 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-test
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: vmisra1989/myapp_test:latest
+        ports:
+        - containerPort: 3000
