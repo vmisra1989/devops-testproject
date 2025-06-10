@@ -25,7 +25,7 @@ This project demonstrates a CI/CD pipeline using GitHub, Jenkins, Docker, and Mi
 
 6. Deploy the Docker image to Minikube.
 7. Credentials in Jenkins look like:
-![alt text](JenkinsCredimage.png.png)
+![alt text](JenkinsCredimage.png)
 8. Make sure to use correct IDs in Jenkinsfile. Eg: docker-hub-creds was used as ID in Jenkins as docker hub credentials.
 
 ## Usage
