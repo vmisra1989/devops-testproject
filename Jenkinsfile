@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "vmisra1989/myapp_test"
         IMAGE_TAG = "latest"
+        KUBECONFIG = '/Users/vinay/.kube/config'
     }
 
     stages {
@@ -36,8 +37,11 @@ pipeline {
         stage('Deploy to Minikube') {
             
             steps {
-                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                    sh 'kubectl apply -f k8s/deployment.yaml --validate=false'
+                
+                sh 'kubectl config current-context'
+                sh 'kubectl cluster-info'
+                sh 'kubectl apply -f k8s/deployment.yaml'
+
 
                 }
             }
