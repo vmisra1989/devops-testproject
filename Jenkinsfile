@@ -39,7 +39,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
                     sh 'kubectl apply -f k8s/deployment.yaml'
                 }
-
+            }
         }
     }
 }
