@@ -13,3 +13,5 @@ COPY test.sh .
 
 # Make it executable
 RUN chmod +x test.sh
+
+CMD ["./test.sh"]
