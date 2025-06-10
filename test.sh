@@ -5,6 +5,6 @@ echo "Running test script..."
 echo "Hello from Jenkins!"
 echo "yet another test"
 
-# Keep the container alive
+# Keep the container alive.
 sleep infinity
 
