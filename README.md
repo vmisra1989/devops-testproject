@@ -20,6 +20,9 @@ This project demonstrates a CI/CD pipeline using GitHub, Jenkins, Docker, and Mi
 4. Integrate minikube to Jenkins using secret file by uploading .kubeconfig file and putting location of kubeconfig file in the Jenkinsfile. There are various other ways to integrate if Jenkins and minikube are not installed locally. 
 3. Create a Jenkins pipeline to build and test the Docker image.
 ![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 4. Deploy the Docker image to Minikube.
 
 ## Usage
