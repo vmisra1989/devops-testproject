@@ -16,7 +16,10 @@ This project demonstrates a CI/CD pipeline using GitHub, Jenkins, Docker, and Mi
 ## Setup Instructions
 1. Install Jenkins, Docker, and Minikube on your macOS.
 2. Configure Jenkins to connect to your GitHub repository.
+3. Integrate Jenkins to docker using credentials by adding credentials in Jenkins from docker. 
+4. Integrate minikube to Jenkins using secret file by uploading .kubeconfig file and putting location of kubeconfig file in the Jenkinsfile. There are various other ways to integrate if Jenkins and minikube are not installed locally. 
 3. Create a Jenkins pipeline to build and test the Docker image.
+![alt text](image.png)
 4. Deploy the Docker image to Minikube.
 
 ## Usage
