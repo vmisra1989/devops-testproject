@@ -16,8 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'chmod +x test.sh'
-                    sh './test.sh'
+                    sh 'docker build -t vmisra1989/myapp_test:latest .'
                 }
             }
         }
