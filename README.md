@@ -39,6 +39,7 @@ This project demonstrates a CI/CD pipeline using GitHub, Jenkins, Docker, and Mi
 ## Conclusion
 This project provides a basic setup for a CI/CD pipeline using GitHub, Jenkins, Docker, and Minikube on macOS.
 
+## In next release
 There are many possibilities to make it better slowly. Couple of them which will be implemented in next version of this project:
 1. Keep github repo private and integrate Jenkins with github repo.
 2. Integrating testing tools with Jenkins using plugins.
