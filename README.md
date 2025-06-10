@@ -19,13 +19,13 @@ This project demonstrates a CI/CD pipeline using GitHub, Jenkins, Docker, and Mi
 3. Integrate Jenkins to docker using credentials by adding credentials in Jenkins from docker. 
 4. Integrate minikube to Jenkins using secret file by uploading .kubeconfig file and putting location of kubeconfig file in the Jenkinsfile. There are various other ways to integrate if Jenkins and minikube are not installed locally.
 5. Create a Jenkins pipeline to build and test the Docker image.
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](Pipeline-SCMpoll.png)
+![alt text](PipelineSCM.png)
+![alt text](ScriptPath-Jenkinspipeline.png)
 
 6. Deploy the Docker image to Minikube.
 7. Credentials in Jenkins look like:
-![alt text](image-3.png)
+![alt text](JenkinsCredimage.png.png)
 8. Make sure to use correct IDs in Jenkinsfile. Eg: docker-hub-creds was used as ID in Jenkins as docker hub credentials.
 
 ## Usage
